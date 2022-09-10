@@ -1,0 +1,14 @@
+<p>.:: {{title}} ::.</p>
+
+<div *ngIf="donutDetails !== undefined">
+    <!-- <p>Id: {{donutDetails.id}}</p> -->
+    <p>Name: {{donutDetails.name}}</p>
+    <p>Calories: {{donutDetails.calories}}</p>
+    <p>Extras: {{donutDetails.extras}}</p>
+
+    <p>Photo: <img src="{{donutDetails.photo}}" alt="Trulli" width="120" height="100"></p>
+    <p>Photo attribution: <a href={{donutDetails.photo_attribution}}>{{donutDetails.photo_attribution}}</a></p>
+
+</div>
+
+<button (click)="navigateToHome()">Go Home</button>

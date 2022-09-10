@@ -1,0 +1,11 @@
+<h1>Donuts</h1>    
+
+<div *ngIf="donutList.length > 0">
+    <div *ngFor="let donut of donutList; index as i">
+        <p>
+            <a href='donutDetail/{{ donut.id }}'>
+                {{ donut.name }}
+            </a>
+        </p>
+    </div>
+</div>
