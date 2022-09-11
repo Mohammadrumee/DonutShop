@@ -8,6 +8,7 @@ import { DonutListComponent } from './component/donut-list/donut-list.component'
 import { DonutCartComponent } from './component/donut-cart/donut-cart.component';
 import { NotFoundComponent } from './component/not-found/not-found.component';
 import { HttpClientModule } from '@angular/common/http';
+import { HeaderComponent } from './component/header/header.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { HttpClientModule } from '@angular/common/http';
     DonutDetailsComponent,
     DonutListComponent,
     DonutCartComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

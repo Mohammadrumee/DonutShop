@@ -1,4 +1,5 @@
 <p>.:: {{title}} ::.</p>
+<app-header></app-header>
 
 <div *ngIf="donutDetails !== undefined">
     <!-- <p>Id: {{donutDetails.id}}</p> -->
@@ -10,5 +11,3 @@
     <p>Photo attribution: <a href={{donutDetails.photo_attribution}}>{{donutDetails.photo_attribution}}</a></p>
 
 </div>
-
-<button (click)="navigateToHome()">Go Home</button>

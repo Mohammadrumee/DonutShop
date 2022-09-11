@@ -14,14 +14,11 @@ export class DonutDetailsComponent implements OnInit {
 
   donutDetails:Donutdetails | undefined;
 
-  value :string | undefined;
-
   constructor(private apiDonutShopService:DonutShopServiceApiService, private route:ActivatedRoute, private router:Router) { }
 
   ngOnInit() :void {
     this.route.paramMap.subscribe((params) => {
       let id = Number(params.get('id'));
-      // alert("ID>>"+ this.id );
       this.getDonutDetailsById(id);
     });
   }
@@ -30,16 +27,10 @@ export class DonutDetailsComponent implements OnInit {
     let donutDetails = this.apiDonutShopService.getDonutById(id);
 
     donutDetails?.subscribe(data => {
-
-      console.log(this.value);
       this.donutDetails = data;
 
     });
 
-  }
-
-  navigateToHome(){
-    this.router.navigate(['home']);
   }
 
 }
