@@ -11,6 +11,8 @@ import { OrderService } from 'src/app/service/order.service';
 })
 export class DonutCartComponent implements OnInit {
 
+
+  price : number = 1;
   constructor(private orderService:OrderService) { }
 
   orderDetails : Observable<Donutdetails> | any = [];
@@ -22,6 +24,11 @@ export class DonutCartComponent implements OnInit {
   getAllDonutCart(): void {
     this.orderService.getOrderCart();
       this.orderDetails = this.orderService.getOrderCart();
+  }
+
+  removeFromCart(id : string) {
+    this.orderService.removeFromLocalStorage(id);
+    this.getAllDonutCart();
   }
 
 }

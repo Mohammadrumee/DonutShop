@@ -13,7 +13,7 @@ export interface Properties {
 }
 
 export interface Donutdetails {
-    id :number;
+    id :string;
     ref :string;
     name :string;
     calories : number;

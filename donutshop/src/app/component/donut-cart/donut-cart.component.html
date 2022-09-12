@@ -1,10 +1,24 @@
 <app-header></app-header>
 
 
-    <div *ngFor="let donut of orderDetails; index as i">
-        <p>
-            <!-- <a href='donutDetail/{{ donut.id }}'> -->
-                {{ donut.name }}
-            <!-- </a> -->
-        </p>
-    </div>
+
+<table *ngIf="orderDetails.length > 0">
+    
+    <thead>
+        <th>Donut</th>
+        <th>Calories</th>
+        <th>Price</th>
+        <th>Action</th>
+    </thead>
+
+
+    <tbody *ngFor="let donut of orderDetails; index as i">
+        <td><p>{{ donut.name }}</p></td>
+        <td><p>{{ donut.calories }}</p></td>
+        <td><p>{{ price | currency}}</p></td>
+        <td><button (click)="removeFromCart(donut.id)">Remove</button></td>
+    </tbody>
+
+
+
+</table>

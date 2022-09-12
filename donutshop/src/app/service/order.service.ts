@@ -13,7 +13,7 @@ export class OrderService {
 
 
   setOrderCart(donutDetails:Donutdetails) : void {
-    localStorage.setItem(donutDetails.name, JSON.stringify(donutDetails));
+    localStorage.setItem(donutDetails.id, JSON.stringify(donutDetails));
   }
 
   getOrderCart() :Observable<Donutdetails> | any {
@@ -26,6 +26,10 @@ export class OrderService {
     });
 
     return orderDetails;
+  }
+
+  removeFromLocalStorage(id :string){
+    localStorage.removeItem(id);
   }
 
 }
