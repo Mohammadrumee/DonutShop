@@ -12,7 +12,6 @@ export class DonutListComponent implements OnInit {
 
   title = 'Donut Shop API Service';
 
-  count :number | undefined;
   donutList:Donutshop [] | any = [];
 
   constructor(private apiDonutShopService:DonutShopServiceApiService, private orderService:OrderService){
@@ -26,16 +25,9 @@ export class DonutListComponent implements OnInit {
   getApiResponse(): void {
     this.apiDonutShopService.getDonutList()
     .subscribe((data) => {
-
-      this.count = data.count;
       this.donutList = [...data.results];    
     });
   }
 
-
-  // ngOnDestroy(): void {
-  //   console.log("Destroying DonutListComponent"); // ngOnDestroy is not triggering
-  //   localStorage.clear();
-  // }
 
 }

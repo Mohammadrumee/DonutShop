@@ -13,6 +13,7 @@ export class OrderService {
 
 
   setOrderCart(donutDetails:Donutdetails) : void {
+    donutDetails.status = true;
     localStorage.setItem(donutDetails.id, JSON.stringify(donutDetails));
   }
 

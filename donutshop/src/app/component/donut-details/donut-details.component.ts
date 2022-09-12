@@ -43,13 +43,8 @@ export class DonutDetailsComponent implements OnInit {
   }
 
   addToCart(donutDetails:Donutdetails){    
-    // localStorage.setItem(donutDetails.name, JSON.stringify(donutDetails));
     this.orderService.setOrderCart(donutDetails);
   }
 
-  // ngOnDestroy(): void {
-  //   console.log("Destroying DonutDetailsComponent"); // ngOnDestroy is not triggering
-  //   localStorage.clear();
-  // }
 
 }

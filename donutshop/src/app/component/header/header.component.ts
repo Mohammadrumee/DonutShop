@@ -10,34 +10,18 @@ import { OrderService } from 'src/app/service/order.service';
 })
 export class HeaderComponent implements OnInit {
 
-  lgh : number | undefined;
-
-  observableBlog: Donutdetails [] = [];
-
-  constructor(private router:Router, private orderService:OrderService) { }
+  constructor(private router:Router) { }
   
   ngOnInit(){
-    // this.getApiResponse();
   }
-
-  // getApiResponse(): void {
-  //   this.orderService.getOrderCart();
-  // }
 
 
   navigateToHome(){
-    // this.ngOnDestroy();
     this.router.navigate(['home']);
   }
 
   navigateToCart(){
-    // this.ngOnDestroy();
     this.router.navigate(['cart']);
   }
-
-  // ngOnDestroy(): void {
-  //   console.log("Destroying loop"); // ngOnDestroy is not triggering
-  //   localStorage.clear();
-  // }
 
 }
