@@ -19,8 +19,6 @@ export class DonutDetailsComponent implements OnInit {
   id: string = '';
 
   cartTotal:number = 0;
-  favoriteTotal:number = 0;
-
 
   constructor(private apiDonutShopService:DonutShopServiceApiService, private route:ActivatedRoute, 
     private router:Router, private orderService:OrderService) { }
@@ -30,6 +28,12 @@ export class DonutDetailsComponent implements OnInit {
       let id = Number(params.get('id'));
       this.getDonutDetailsById(id);
     });
+
+    this.orderService.getOrderCount()
+      .subscribe((orderCount) => {
+        this.cartTotal = orderCount.cartTotal;
+    });
+
   }
 
   getDonutDetailsById(id:number) :void{
@@ -44,6 +48,13 @@ export class DonutDetailsComponent implements OnInit {
 
   addToCart(donutDetails:Donutdetails){    
     this.orderService.setOrderCart(donutDetails);
+
+    let count:OrderCount = {
+      cartTotal: this.cartTotal + 1
+    }
+
+    this.orderService.setOrderCount(count);
+
   }
 
 

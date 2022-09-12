@@ -10,15 +10,20 @@ import { OrderService } from 'src/app/service/order.service';
 })
 export class DonutListComponent implements OnInit {
 
-  title = 'Donut Shop API Service';
+  cartTotal:number = 0;
 
   donutList:Donutshop [] | any = [];
 
   constructor(private apiDonutShopService:DonutShopServiceApiService, private orderService:OrderService){
   }
 
-   ngOnInit(){
+  ngOnInit(){
     this.getApiResponse();
+
+    this.orderService.getOrderCount()
+    .subscribe((orderCount) => {
+      this.cartTotal = orderCount.cartTotal;
+    });
   }
 
   
@@ -28,6 +33,5 @@ export class DonutListComponent implements OnInit {
       this.donutList = [...data.results];    
     });
   }
-
 
 }

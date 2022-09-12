@@ -8,10 +8,6 @@ import { OrderCount } from '../interface/order-count';
 })
 export class OrderService {
 
-
-  observableBlog: Donutdetails [] = [];
-
-
   setOrderCart(donutDetails:Donutdetails) : void {
     donutDetails.status = true;
     localStorage.setItem(donutDetails.id, JSON.stringify(donutDetails));
@@ -31,6 +27,21 @@ export class OrderService {
 
   removeFromLocalStorage(id :string){
     localStorage.removeItem(id);
+  }
+
+
+  private _orderCount : BehaviorSubject<OrderCount> = new BehaviorSubject<OrderCount>({
+    cartTotal:0
+  });
+
+  private _orderCount$ : Observable<OrderCount> = this._orderCount.asObservable();
+
+  getOrderCount() : Observable<OrderCount> {
+    return this._orderCount$;
+  }
+
+  setOrderCount(latestValue:OrderCount) : void {
+    this._orderCount.next(latestValue);
   }
 
 }

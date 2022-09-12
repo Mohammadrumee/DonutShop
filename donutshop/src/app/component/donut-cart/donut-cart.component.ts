@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Donutdetails } from 'src/app/interface/donutshop';
+import { OrderCount } from 'src/app/interface/order-count';
 import { OrderService } from 'src/app/service/order.service';
 
 @Component({
@@ -17,12 +18,19 @@ export class DonutCartComponent implements OnInit {
 
   totalPrice :number = 0;
 
+  cartTotal:number = 0;
+
   constructor(private orderService:OrderService) { }
 
   orderDetails : Observable<Donutdetails> | any = [];
 
   ngOnInit(){
     this.getAllDonutCart();
+
+    this.orderService.getOrderCount()
+    .subscribe((orderCount) => {
+      this.cartTotal = orderCount.cartTotal;
+    });
   }
 
   getAllDonutCart(): void {
@@ -43,6 +51,12 @@ export class DonutCartComponent implements OnInit {
     this.totalCalories = 0;
     this.totalPrice = 0;
     this.getAllDonutCart();
+
+    let count:OrderCount = {
+      cartTotal: this.cartTotal - 1
+    }
+
+    this.orderService.setOrderCount(count);
   }
 
 }
