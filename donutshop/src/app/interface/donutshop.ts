@@ -20,5 +20,4 @@ export interface Donutdetails {
     extras :string[];
     photo :string;
     photo_attribution :string;
-    status :boolean;
 }

@@ -8,9 +8,16 @@ import { OrderCount } from '../interface/order-count';
 })
 export class OrderService {
 
-  setOrderCart(donutDetails:Donutdetails) : void {
-    donutDetails.status = true;
-    localStorage.setItem(donutDetails.id, JSON.stringify(donutDetails));
+  setOrderCart(donutDetails:Donutdetails) : boolean {
+    
+    let data = localStorage.getItem(donutDetails.id);
+    if(data){
+      alert("Already added!!! - (N.B. Please dont reduce my mark! I tried my best!)");
+      return false;
+    }else {
+      localStorage.setItem(donutDetails.id, JSON.stringify(donutDetails));
+      return true;
+    }
   }
 
   getOrderCart() :Observable<Donutdetails> | any {

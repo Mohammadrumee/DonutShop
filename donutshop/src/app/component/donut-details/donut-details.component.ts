@@ -46,15 +46,17 @@ export class DonutDetailsComponent implements OnInit {
 
   }
 
-  addToCart(donutDetails:Donutdetails){    
-    this.orderService.setOrderCart(donutDetails);
+  addToCart(donutDetails:Donutdetails) :void{    
+    
+    if(this.orderService.setOrderCart(donutDetails)){
 
-    let count:OrderCount = {
-      cartTotal: this.cartTotal + 1
+      let count:OrderCount = {
+        cartTotal: this.cartTotal + 1
+      }
+  
+      this.orderService.setOrderCount(count);
+
     }
-
-    this.orderService.setOrderCount(count);
-
   }
 
 
