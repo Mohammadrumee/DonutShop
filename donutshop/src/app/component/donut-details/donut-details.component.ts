@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Donutdetails, Donutshop } from 'src/app/interface/donutshop';
+import { OrderCount } from 'src/app/interface/order-count';
 import { DonutShopServiceApiService } from 'src/app/service/donut-shop-service-api.service';
+import { OrderService } from 'src/app/service/order.service';
 
 @Component({
   selector: 'app-donut-details',
@@ -14,7 +16,14 @@ export class DonutDetailsComponent implements OnInit {
 
   donutDetails:Donutdetails | undefined;
 
-  constructor(private apiDonutShopService:DonutShopServiceApiService, private route:ActivatedRoute, private router:Router) { }
+  id: string = '';
+
+  cartTotal:number = 0;
+  favoriteTotal:number = 0;
+
+
+  constructor(private apiDonutShopService:DonutShopServiceApiService, private route:ActivatedRoute, 
+    private router:Router, private orderService:OrderService) { }
 
   ngOnInit() :void {
     this.route.paramMap.subscribe((params) => {
@@ -32,5 +41,15 @@ export class DonutDetailsComponent implements OnInit {
     });
 
   }
+
+  addToCart(donutDetails:Donutdetails){    
+    // localStorage.setItem(donutDetails.name, JSON.stringify(donutDetails));
+    this.orderService.setOrderCart(donutDetails);
+  }
+
+  // ngOnDestroy(): void {
+  //   console.log("Destroying DonutDetailsComponent"); // ngOnDestroy is not triggering
+  //   localStorage.clear();
+  // }
 
 }

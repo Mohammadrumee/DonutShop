@@ -12,4 +12,9 @@ export class NotFoundComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  ngOnDestroy(): void {
+    console.log("Destroying NotFoundComponent"); // ngOnDestroy is not triggering
+    localStorage.clear();
+  }
+
 }

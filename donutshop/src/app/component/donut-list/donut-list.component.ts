@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Donutshop } from 'src/app/interface/donutshop';
 import { DonutShopServiceApiService } from 'src/app/service/donut-shop-service-api.service';
+import { OrderService } from 'src/app/service/order.service';
 
 @Component({
   selector: 'app-donut-list',
@@ -14,7 +15,7 @@ export class DonutListComponent implements OnInit {
   count :number | undefined;
   donutList:Donutshop [] | any = [];
 
-  constructor(private apiDonutShopService:DonutShopServiceApiService){
+  constructor(private apiDonutShopService:DonutShopServiceApiService, private orderService:OrderService){
   }
 
    ngOnInit(){
@@ -30,5 +31,11 @@ export class DonutListComponent implements OnInit {
       this.donutList = [...data.results];    
     });
   }
+
+
+  // ngOnDestroy(): void {
+  //   console.log("Destroying DonutListComponent"); // ngOnDestroy is not triggering
+  //   localStorage.clear();
+  // }
 
 }

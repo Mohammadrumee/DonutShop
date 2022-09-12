@@ -3,6 +3,7 @@
 
 <div *ngIf="donutDetails !== undefined">
     <!-- <p>Id: {{donutDetails.id}}</p> -->
+    <button (click)="addToCart(donutDetails)">Add to Cart</button>
     <p>Name: {{donutDetails.name}}</p>
     <p>Calories: {{donutDetails.calories}}</p>
     <p>Extras: {{donutDetails.extras}}</p>

@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { Donutdetails } from 'src/app/interface/donutshop';
+import { OrderService } from 'src/app/service/order.service';
 
 @Component({
   selector: 'app-donut-cart',
@@ -7,9 +11,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DonutCartComponent implements OnInit {
 
-  constructor() { }
+  constructor(private orderService:OrderService) { }
 
-  ngOnInit(): void {
+  orderDetails : Observable<Donutdetails> | any = [];
+
+  ngOnInit(){
+    this.getAllDonutCart();
+  }
+
+  getAllDonutCart(): void {
+    this.orderService.getOrderCart();
+      this.orderDetails = this.orderService.getOrderCart();
   }
 
 }
